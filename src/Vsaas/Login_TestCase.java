@@ -15,7 +15,7 @@ public class Login_TestCase {
 	Platform web = new Platform();
 	int sec = 10;
 	WebDriverWait[] wait = new WebDriverWait[web.driver.length];
-
+	String element[] = new String[web.driver.length];
 	public Login_TestCase() {
 		for (int i = 0; i < web.driver.length; i++) {
 			wait[i] = new WebDriverWait(web.driver[i], sec);
@@ -24,14 +24,46 @@ public class Login_TestCase {
 	}
 
 	public boolean Login_Z() {
-
-		boolean result = true;
+		boolean result = false;
 		String methodname = Thread.currentThread().getStackTrace()[1].getMethodName();
 		for (int i = 0; i < web.driver.length; i++) {
 			Wait_Element("email", methodname, i);
 			web.driver[i].findElement(By.name("email")).sendKeys("jhih_chen@sina.com");
 			web.driver[i].findElement(By.name("password")).sendKeys("888888ii");
 			web.driver[i].findElement(By.className("btn")).click();
+		}
+		for (int i = 0; i < web.driver.length; i++) {
+			QuitDriver(i);
+		}
+
+		return result;
+	}
+
+	public boolean Login_ALLBlank() {
+
+		boolean result = false;
+		String methodname = Thread.currentThread().getStackTrace()[1].getMethodName();
+		for (int i = 0; i < web.driver.length; i++) {
+			Wait_Element("email", methodname, i);
+			web.driver[i].findElement(By.className("btn")).click();
+			
+		}
+		return result;
+
+	}
+
+	public boolean Login_WrongPassword() {
+		boolean result = false;
+		String ans="±b¸¹©Î±K½X¿ù»~";
+		String methodname = Thread.currentThread().getStackTrace()[1].getMethodName();
+		for (int i = 0; i < web.driver.length; i++) {
+			Wait_Element("email", methodname, i);
+			web.driver[i].findElement(By.name("email")).sendKeys("jhih_chen@sina.com");
+			web.driver[i].findElement(By.name("password")).sendKeys("12345678abcdefg");
+			web.driver[i].findElement(By.className("btn")).click();
+			element[i]=web.driver[i].findElement(By.cssSelector("span[data-reactid='.0.1.0.4']")).getText();
+			System.out.println(element[i]);
+		
 		}
 		for (int i = 0; i < web.driver.length; i++) {
 			QuitDriver(i);

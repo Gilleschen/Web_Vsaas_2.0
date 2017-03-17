@@ -16,5 +16,11 @@ public class Login_Junit {
 	public void Login_Z() {
 		assertTrue(testcase.Login_Z());
 	}
+	
+	@Test
+	public void Login_WrongPassword(){
+		
+		assertTrue(testcase.Login_WrongPassword());
+	}
 
 }
