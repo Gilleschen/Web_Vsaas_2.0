@@ -13,7 +13,7 @@ public class Login_Junit {
 	Login_TestCase testcase = new Login_TestCase();
 
 	@Test
-	public void test() {
+	public void Login_Z() {
 		assertTrue(testcase.Login_Z());
 	}
 

@@ -33,7 +33,7 @@ public class LoadBrowserList {
 
 					BrowserList.add(DeviceList[i]);
 				}
-				System.out.println(BrowserList);
+				System.out.println("ด๚ธียsฤýพนกG"+BrowserList);
 
 			}
 		} catch (IOException e) {
