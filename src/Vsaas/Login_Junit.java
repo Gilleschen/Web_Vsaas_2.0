@@ -22,5 +22,23 @@ public class Login_Junit {
 		
 		assertTrue(testcase.Login_WrongPassword());
 	}
+	@Test
+	public void Login_ALLBlank_Email(){
+		assertTrue(testcase.Login_ALLBlank_Email());
+	}
+	@Test
+	public void Login_AllBlank_Password(){
+		
+		assertTrue(testcase.Login_AllBlank_Password());
+		
+	}
+	@Test
+	public void Login_InvalideMail(){
+		assertTrue(testcase.Login_InvalideMail());
+	}
+	@Test
+	public void Login_WrongPassword_rule(){
+		assertTrue(testcase.Login_WrongPassword_rule());
+	}
 
 }

@@ -17,26 +17,31 @@ public class Platform {
 
 	static LoadBrowserList bl = new LoadBrowserList();
 	public static WebDriver driver[] = new WebDriver[bl.BrowserList.size()];
-	public static DesiredCapabilities cap;
+	public static DesiredCapabilities cap[] = new DesiredCapabilities[bl.BrowserList.size()];
 
 	public Platform() {
+
+		for (int i = 0; i < bl.BrowserList.size(); i++) {
+			cap[i] = new DesiredCapabilities();
+		}
+
 		for (int i = 0; i < bl.BrowserList.size(); i++) {
 
 			if (bl.BrowserList.get(i).equals("IE")) {
-				cap = DesiredCapabilities.internetExplorer();
-				//cap.setCapability("platform", "Windows 10");
+				cap[i] = DesiredCapabilities.internetExplorer();
+				// cap.setCapability("platform", "Windows 10");
 
 			} else if (bl.BrowserList.get(i).equals("Chrome")) {
-				cap = DesiredCapabilities.chrome();
-				//.setCapability("platform", "Windows 10");
+				cap[i] = DesiredCapabilities.chrome();
+				// .setCapability("platform", "Windows 10");
 
 			} else if (bl.BrowserList.get(i).equals("FireFox")) {
-				cap = DesiredCapabilities.firefox();
-				//cap.setCapability("platform", "Windows 10");
+				cap[i] = DesiredCapabilities.firefox();
+				// cap.setCapability("platform", "Windows 10");
 
 			}
 			try {
-				driver[i] = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+				driver[i] = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap[i]);
 			} catch (MalformedURLException e) {
 				;
 			}
