@@ -1,6 +1,7 @@
 package Vsaas;
 
 import java.awt.AWTException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 
@@ -130,7 +131,6 @@ public class Login_TestCase {
 			web.driver[i].findElement(By.className("btn")).click();
 			Wait_Element_ByCSS("span[data-reactid='.0.1.0.4']", methodname, i);
 			element[i] = web.driver[i].findElement(By.cssSelector("span[data-reactid='.0.1.0.4']")).getText();
-
 		}
 
 		for (int i = 0; i < web.driver.length; i++) {
@@ -147,7 +147,7 @@ public class Login_TestCase {
 			if (element[i].equals(list) == true) {
 				resultelement[i] = true;
 				result = true;
-				break;
+				continue;
 			} else {
 				resultelement[i] = false;
 				result = false;
@@ -179,7 +179,7 @@ public class Login_TestCase {
 	void Wait_Element_ByCSS(String element, String methodname, int i) {
 
 		try {
-			wait[i].until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(element)));
+			wait[i].until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(element)));
 		} catch (Exception ex) {
 
 			System.out.println("MethodName:" + this.getClass().getName() + "." + methodname);
@@ -190,5 +190,13 @@ public class Login_TestCase {
 
 	void QuitDriver(int i) {
 		web.driver[i].quit();
+	}
+
+	void sleep(int x) {
+		try {
+			Thread.sleep(x * 1000);
+		} catch (InterruptedException e) {
+			;
+		}
 	}
 }
