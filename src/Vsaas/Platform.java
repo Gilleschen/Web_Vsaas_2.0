@@ -1,14 +1,10 @@
 package Vsaas;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import Vsaas.LoadBrowserList;
@@ -37,6 +33,7 @@ public class Platform {
 
 			} else if (bl.BrowserList.get(i).equals("FireFox")) {
 				cap[i] = DesiredCapabilities.firefox();
+
 				// cap.setCapability("platform", "Windows 10");
 
 			}
