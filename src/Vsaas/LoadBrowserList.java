@@ -17,7 +17,6 @@ public class LoadBrowserList {
 
 		} catch (FileNotFoundException e) {
 			System.out.println("ß‰§£®ÏC:\\browser.txt");
-			;
 		}
 
 		BufferedReader br = new BufferedReader(fr);
